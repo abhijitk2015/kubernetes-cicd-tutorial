@@ -53,7 +53,7 @@ jobs:
           git config --global user.email "actions@github.com"
           git add deployment.yaml
           if ! git diff --cached --exit-code; then
-            git commit -m "Update image to ${{ github.sha }}"
+            git commit -m "Update image to ${{ github.sha }}" || true
             git push -f https://${GIT_TOKEN}@github.com/abhijitk2015/grade-api-gitops.git main
           else
             echo "No changes to commit"
